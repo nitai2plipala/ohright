@@ -65,6 +65,17 @@ cd ohright
 dotnet build ohright.sln
 ```
 
+### 持续集成
+
+项目使用 GitHub Actions 进行持续集成，每次推送或拉取请求时会自动：
+
+1. 还原依赖包
+2. 编译整个解决方案
+3. 运行所有测试
+
+状态徽章：
+![.NET](https://github.com/nitai2plipala/ohright/actions/workflows/dotnet.yml/badge.svg)
+
 ### 使用 CLI 工具
 
 ```bash
