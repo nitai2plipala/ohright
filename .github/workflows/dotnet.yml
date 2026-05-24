@@ -3,6 +3,7 @@ name: .NET
 on:
   push:
     branches: [ "master", "main" ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ "master", "main" ]
 
@@ -12,10 +13,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4.2.2
     
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v4.3.1
       with:
         dotnet-version: '8.0.x'
     
@@ -27,3 +28,27 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --configuration Release --verbosity normal
+      
+    - name: Publish CLI
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: dotnet publish src/OhRight.Cli -c Release -r win-x64 --self-contained -o build/cli
+      
+    - name: Publish gRPC Server
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: dotnet publish src/OhRight.Grpc.Server -c Release -r win-x64 --self-contained -o build/server
+      
+    - name: Create Zip
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: |
+        Compress-Archive -Path build/cli/* -DestinationPath build/ohright-cli-win-x64.zip
+        Compress-Archive -Path build/server/* -DestinationPath build/ohright-server-win-x64.zip
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          build/ohright-cli-win-x64.zip
+          build/ohright-server-win-x64.zip
+        draft: false
+        prerelease: false
