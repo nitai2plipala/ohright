@@ -13,9 +13,11 @@ OhRight 提供两种 API 接口：
 ### 服务地址
 
 ```
-gRPC: http://localhost:5001
+gRPC: http://localhost:5001 (h2c 明文 HTTP/2)
 HTTP: http://localhost:5000
 ```
+
+> **注意**: 本机开发场景使用 HTTP/2 明文 (h2c)，无需 TLS 证书。
 
 ### Proto 定义
 
@@ -358,6 +360,7 @@ enum ErrorCode {
 using Grpc.Net.Client;
 using OhRight.Grpc;
 
+// 使用 h2c 明文 HTTP/2 连接（本地开发场景）
 var channel = GrpcChannel.ForAddress("http://localhost:5001");
 var client = new RegistryService.RegistryServiceClient(channel);
 ```

@@ -73,7 +73,7 @@ builder.WebHost.ConfigureKestrel(options =>
     // HTTP 端点（用于健康检查和 Swagger）
     options.ListenAnyIP(serverConfig.HttpPort);
 
-    // gRPC 端点
+    // gRPC 端点 (h2c 明文 HTTP/2)
     options.ListenAnyIP(serverConfig.GrpcPort, listenOptions =>
     {
         listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2;
@@ -135,7 +135,7 @@ app.MapGet("/status", (GrpcServerLifecycleService lifecycleService) =>
 var logger = app.Services.GetRequiredService<ILoggerService>();
 logger.Information("OhRight gRPC Server 启动完成");
 logger.Information("HTTP 端点: http://localhost:{Port}", serverConfig.HttpPort);
-logger.Information("gRPC 端点: http://localhost:{Port}", serverConfig.GrpcPort);
+logger.Information("gRPC 端点: http://localhost:{Port} (h2c 明文 HTTP/2)", serverConfig.GrpcPort);
 
 app.Run();
 

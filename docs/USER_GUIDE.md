@@ -278,9 +278,11 @@ dotnet run --project src/OhRight.Grpc.Server
 | 端点 | 说明 |
 |------|------|
 | `http://localhost:5000` | HTTP (Swagger UI) |
-| `http://localhost:5001` | gRPC |
+| `http://localhost:5001` | gRPC (h2c 明文 HTTP/2) |
 | `http://localhost:5000/health` | 健康检查 |
 | `http://localhost:5000/status` | 服务器状态 |
+
+> **注意**: 本机开发场景使用 HTTP/2 明文 (h2c)，无需 TLS 证书。
 
 ### 使用 grpcurl 测试
 

@@ -92,9 +92,11 @@ dotnet run --project src/OhRight.Grpc.Server
 
 服务器默认监听：
 - HTTP: http://localhost:5000
-- gRPC: http://localhost:5001
+- gRPC: http://localhost:5001 (h2c 明文 HTTP/2)
 - 健康检查: http://localhost:5000/health
 - Swagger: http://localhost:5000/swagger
+
+> **注意**: 本机开发场景使用 HTTP/2 明文 (h2c)，无需 TLS 证书。
 
 ## CLI 命令参考
 
