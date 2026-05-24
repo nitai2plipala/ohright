@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8911D243-7851-46C2-8B4B-87AB8D6BCD30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Cli", "src\OhRight.Cli\OhRight.Cli.csproj", "{8894AC5B-D422-4332-A22D-B6FE5C822E40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{778AC172-4A4E-41ED-917E-AD6244FFC149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Core.Tests", "tests\OhRight.Core.Tests\OhRight.Core.Tests.csproj", "{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Cli.Tests", "tests\OhRight.Cli.Tests\OhRight.Cli.Tests.csproj", "{01870C5B-17B1-41EE-93B5-CC990B67C072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Core", "src\OhRight.Core\OhRight.Core.csproj", "{DA48641A-268B-442A-BBE6-C11D203EC67E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Grpc.Server", "src\OhRight.Grpc.Server\OhRight.Grpc.Server.csproj", "{09C58426-410D-47B4-92B4-5F90BB6A1747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OhRight.Grpc.Server.Tests", "tests\OhRight.Grpc.Server.Tests\OhRight.Grpc.Server.Tests.csproj", "{468104F8-80B8-47CF-8C8D-E9E20705E589}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8894AC5B-D422-4332-A22D-B6FE5C822E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8894AC5B-D422-4332-A22D-B6FE5C822E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8894AC5B-D422-4332-A22D-B6FE5C822E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8894AC5B-D422-4332-A22D-B6FE5C822E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01870C5B-17B1-41EE-93B5-CC990B67C072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01870C5B-17B1-41EE-93B5-CC990B67C072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01870C5B-17B1-41EE-93B5-CC990B67C072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01870C5B-17B1-41EE-93B5-CC990B67C072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA48641A-268B-442A-BBE6-C11D203EC67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA48641A-268B-442A-BBE6-C11D203EC67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA48641A-268B-442A-BBE6-C11D203EC67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA48641A-268B-442A-BBE6-C11D203EC67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C58426-410D-47B4-92B4-5F90BB6A1747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C58426-410D-47B4-92B4-5F90BB6A1747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C58426-410D-47B4-92B4-5F90BB6A1747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C58426-410D-47B4-92B4-5F90BB6A1747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468104F8-80B8-47CF-8C8D-E9E20705E589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468104F8-80B8-47CF-8C8D-E9E20705E589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468104F8-80B8-47CF-8C8D-E9E20705E589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468104F8-80B8-47CF-8C8D-E9E20705E589}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8894AC5B-D422-4332-A22D-B6FE5C822E40} = {8911D243-7851-46C2-8B4B-87AB8D6BCD30}
+		{255EC0F7-D681-4BF1-8E39-DD0B110CCDF6} = {778AC172-4A4E-41ED-917E-AD6244FFC149}
+		{01870C5B-17B1-41EE-93B5-CC990B67C072} = {778AC172-4A4E-41ED-917E-AD6244FFC149}
+		{DA48641A-268B-442A-BBE6-C11D203EC67E} = {8911D243-7851-46C2-8B4B-87AB8D6BCD30}
+		{09C58426-410D-47B4-92B4-5F90BB6A1747} = {8911D243-7851-46C2-8B4B-87AB8D6BCD30}
+		{468104F8-80B8-47CF-8C8D-E9E20705E589} = {778AC172-4A4E-41ED-917E-AD6244FFC149}
+	EndGlobalSection
+EndGlobal

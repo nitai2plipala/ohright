@@ -1,0 +1,200 @@
+syntax = "proto3";
+
+package registry;
+
+option csharp_namespace = "OhRight.Grpc";
+
+// 文件关联服务定义
+service RegistryService {
+  // 获取文件关联信息
+  rpc GetFileAssociation (FileAssociationRequest) returns (FileAssociationResponse);
+  
+  // 设置文件关联
+  rpc SetFileAssociation (SetFileAssociationRequest) returns (SetFileAssociationResponse);
+  
+  // 获取右键菜单项列表
+  rpc GetContextMenuItems (ContextMenuRequest) returns (ContextMenuResponse);
+  
+  // 添加右键菜单项
+  rpc AddContextMenuItem (AddContextMenuRequest) returns (AddContextMenuResponse);
+  
+  // 移除右键菜单项
+  rpc RemoveContextMenuItem (RemoveContextMenuRequest) returns (RemoveContextMenuResponse);
+  
+  // 获取打开方式列表
+  rpc GetOpenWithList (OpenWithRequest) returns (OpenWithResponse);
+  
+  // 添加打开方式
+  rpc AddOpenWithEntry (AddOpenWithRequest) returns (AddOpenWithResponse);
+  
+  // 移除打开方式
+  rpc RemoveOpenWithEntry (RemoveOpenWithRequest) returns (RemoveOpenWithResponse);
+  
+  // 健康检查
+  rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse);
+}
+
+// 文件关联请求
+message FileAssociationRequest {
+  string extension = 1;  // 文件扩展名，例如 ".txt"
+}
+
+// 文件关联响应
+message FileAssociationResponse {
+  FileAssociation association = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 文件关联模型
+message FileAssociation {
+  string extension = 1;
+  string prog_id = 2;
+  string command = 3;
+  string description = 4;
+}
+
+// 设置文件关联请求
+message SetFileAssociationRequest {
+  FileAssociation association = 1;
+  bool force = 2;  // 是否强制设置
+}
+
+// 设置文件关联响应
+message SetFileAssociationResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 右键菜单请求
+message ContextMenuRequest {
+  string target_type = 1;  // "file", "directory", "all"
+  string extension = 2;    // 可选，特定后缀
+}
+
+// 右键菜单响应
+message ContextMenuResponse {
+  repeated ContextMenuItem items = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 右键菜单项模型
+message ContextMenuItem {
+  string id = 1;
+  string name = 2;
+  string command = 3;
+  string icon = 4;
+  bool enabled = 5;
+  int32 position = 6;
+  ContextMenuType type = 7;
+}
+
+// 添加右键菜单请求
+message AddContextMenuRequest {
+  ContextMenuItem item = 1;
+  string target_type = 2;
+  string extension = 3;
+}
+
+// 添加右键菜单响应
+message AddContextMenuResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 移除右键菜单请求
+message RemoveContextMenuRequest {
+  string item_id = 1;
+  string target_type = 2;
+  string extension = 3;
+}
+
+// 移除右键菜单响应
+message RemoveContextMenuResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 打开方式请求
+message OpenWithRequest {
+  string extension = 1;
+}
+
+// 打开方式响应
+message OpenWithResponse {
+  repeated OpenWithEntry entries = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 打开方式条目模型
+message OpenWithEntry {
+  string prog_id = 1;
+  string name = 2;
+  string command = 3;
+  string icon = 4;
+  bool is_user = 5;  // 用户级还是系统级
+}
+
+// 添加打开方式请求
+message AddOpenWithRequest {
+  OpenWithEntry entry = 1;
+  string extension = 2;
+}
+
+// 添加打开方式响应
+message AddOpenWithResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 移除打开方式请求
+message RemoveOpenWithRequest {
+  string prog_id = 1;
+  string extension = 2;
+}
+
+// 移除打开方式响应
+message RemoveOpenWithResponse {
+  bool success = 1;
+  ErrorCode error_code = 2;
+  string error_message = 3;
+}
+
+// 健康检查请求
+message HealthCheckRequest {
+}
+
+// 健康检查响应
+message HealthCheckResponse {
+  bool healthy = 1;
+  string version = 2;
+  string status = 3;
+}
+
+// 错误码枚举
+enum ErrorCode {
+  SUCCESS = 0;
+  UNKNOWN_ERROR = 1;
+  INVALID_ARGUMENT = 2;
+  NOT_FOUND = 3;
+  ALREADY_EXISTS = 4;
+  PERMISSION_DENIED = 5;
+  INTERNAL_ERROR = 6;
+  NOT_SUPPORTED = 7;
+  HASH_VALIDATION_FAILED = 8;
+}
+
+// 右键菜单类型枚举
+enum ContextMenuType {
+  UNKNOWN = 0;
+  FILE = 1;
+  DIRECTORY = 2;
+  ALL = 3;
+  SHELLX = 4;
+}
